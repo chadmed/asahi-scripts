@@ -249,8 +249,8 @@ diagnose() {
 
     if [ "$macaudio_profile" != "HiFi" ]; then
         echo
-        echo "Pipewire macaudio profile is \"${macaudio_profile}\"."
-        echo "Headphones and speakers will not work. Select the \"Default\" or \"HiFi\" profile."
+        echo "Your Mac seems to be set to a non-default profile. Please go to your audio"
+        echo "settings, and set the profile of the hardware device to \"HiFi\" or \"Default\"."
     fi
 
     if [ "$pro_audio" == "yes" ] || \
@@ -260,9 +260,9 @@ diagnose() {
        [ "$tas2764_quirks" == "no" ]; then
         echo
         echo "!! IMPORTANT !!"
-        echo "Your audio configuration is in an invalid state. It is likely that you tried to"
-        echo "enable speakers early, despite numerous and very explicit warnings not to do so."
-        echo "Potential reason(s) you are seeing this message: "
+        echo "Your audio configuration is in an invalid state. This can happen for a number of reasons,"
+        echo "one of which is attempting to enable speaker support on your machine earlier than the public"
+        echo "release. We detected the following invalid configurations on your system:"
         (
             [ "$pro_audio" == "yes" ] && echo "    - The Pro Audio profile is/was enabled for the internal speakers."
             [ "$old_conf" == "yes" ] && echo "    - You have files in /etc/ from a prerelease version of asahi-audio."
